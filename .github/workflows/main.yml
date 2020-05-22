@@ -5,6 +5,8 @@ jobs:
         runs-on: ubuntu-latest
         name: Store our PR metadata!
         steps:
+            - name: Checkout
+              uses: actions/checkout@v2
             - name: step1
               id: step1
               uses: ./
