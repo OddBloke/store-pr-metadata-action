@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+    store_pr_metadata_job:
+        runs-on: ubuntu-latest
+        name: Store our PR metadata!
+        steps:
+            - name: step1
+              id: step1
+              uses: ./
