@@ -1,0 +1,6 @@
+# action.yml
+name: 'Store PR Metadata'
+description: 'When a PR is merged, store its metadata on the merge commit'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
