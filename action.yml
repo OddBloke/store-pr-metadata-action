@@ -1,6 +1,12 @@
 # action.yml
 name: 'Store PR Metadata'
 description: 'When a PR is merged, store its metadata on the merge commit'
+inputs:
+    pull-request-data:
+        description: "PR JSON"
+        required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+      - ${{ inputs.pull-request-data }}
