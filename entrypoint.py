@@ -33,7 +33,7 @@ def _run(*args, **kwargs):
 _run(["git", "clone", remote_repo], capture_output=True)
 _run(["git", "notes", "add", "-F", "-"],
      cwd=os.environ["GITHUB_REPOSITORY"],
-     stdin=str(pr))
+     input=str(pr))
 _run(["git", "push", "origin", "refs/notes/*"],
      cwd=os.environ["GITHUB_REPOSITORY"])
 
