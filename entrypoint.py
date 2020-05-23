@@ -30,11 +30,10 @@ def _run(*args, **kwargs):
     print(process.stderr)
 
 
-_run(["git", "clone", remote_repo], capture_output=True)
-_run(["git", "notes", "add", "-F", "-"],
-     cwd=os.environ["GITHUB_REPOSITORY"],
-     input=str(pr))
-_run(["git", "push", "origin", "refs/notes/*"],
-     cwd=os.environ["GITHUB_REPOSITORY"])
+directory = "repo"
+
+_run(["git", "clone", remote_repo, directory], capture_output=True)
+_run(["git", "notes", "add", "-F", "-"], cwd=directory, input=str(pr))
+_run(["git", "push", "origin", "refs/notes/*"], cwd=directory)
 
 print(os.environ)
