@@ -24,7 +24,7 @@ remote_repo = (
 
 def _run(*args, **kwargs):
     print(args, kwargs)
-    process = subprocess.run()
+    process = subprocess.run(*args, **kwargs)
     print(process.stdout)
     print(process.returncode)
     print(process.stderr)
