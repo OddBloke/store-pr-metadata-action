@@ -33,7 +33,9 @@ def _run(*args, **kwargs):
 directory = "repo"
 
 _run(["git", "clone", remote_repo, directory], capture_output=True)
-_run(["git", "notes", "add", "-F", "-"], cwd=directory, input=str(pr))
+_run(
+    ["git", "notes", "add", "-F", "-"], cwd=directory, input=str(pr), text=True
+)
 _run(["git", "push", "origin", "refs/notes/*"], cwd=directory)
 
 print(os.environ)
