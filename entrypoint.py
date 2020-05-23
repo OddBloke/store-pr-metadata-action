@@ -21,9 +21,18 @@ remote_repo = (
     )
 )
 
-process = subprocess.run(["git", "clone", remote_repo], capture_output=True)
-print(process.stdout)
-print(process.returncode)
-print(process.stderr)
+
+def _run(*args, **kwargs):
+    print(args, kwargs)
+    process = subprocess.run()
+    print(process.stdout)
+    print(process.returncode)
+    print(process.stderr)
+
+
+_run(["git", "clone", remote_repo], capture_output=True)
+_run(["git", "notes", "add", "-F", "-"],
+     cwd=os.environ["GITHUB_REPOSITORY"],
+     stdin=str(pr))
 
 print(os.environ)
