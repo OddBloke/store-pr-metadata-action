@@ -30,6 +30,9 @@ def _run(*args, **kwargs):
     print(process.stderr)
 
 
+_run(["git", "config", "--global", "user.email", "bot@example.com"])
+_run(["git", "config", "--global", "user.name", "Store PR Metadata Bot"])
+
 directory = "repo"
 
 _run(["git", "clone", remote_repo, directory], capture_output=True)
