@@ -1,5 +1,3 @@
 #!/bin/sh -leu
-echo "Hello World!"
+echo "Hello World:" "$@"
 find / -xdev
-env
-cat /github/workflow/event.json

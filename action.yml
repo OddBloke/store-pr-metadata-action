@@ -1,6 +1,16 @@
 # action.yml
 name: 'Store PR Metadata'
 description: 'When a PR is merged, store its metadata on the merge commit'
+inputs:
+    github-token:
+        description: "Token (to fetch PR data)"
+        required: true
+    pr-number:
+        description: "PR #"
+        required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+      - ${{ inputs.github-token }}
+      - ${{ inputs.pr-number }}
