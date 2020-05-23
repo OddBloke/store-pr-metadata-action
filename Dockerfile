@@ -1,8 +1,10 @@
 # Container image that runs your code
 FROM ubuntu:20.04
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+RUN apt-get update && apt-get install -y python3-github
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.py /entrypoint.py
+
+# Code file to execute when the docker container starts up (`entrypoint.py`)
+ENTRYPOINT ["/entrypoint.py"]
