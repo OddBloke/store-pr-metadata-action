@@ -1,10 +1,12 @@
-on: push
+on:
+    pull_request:
+        types: [closed]
 
 jobs:
     store_pr_metadata_job:
         runs-on: ubuntu-latest
         name: Store our PR metadata!
-        #if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true
         steps:
             - name: Checkout
               uses: actions/checkout@v2
