@@ -7,19 +7,19 @@ from github import Github
 
 print(sys.argv)
 
-g = Github(sys.argv[1])
+token = sys.argv[1]
+pr_number = int(sys.argv[2])
 
+g = Github(token)
+
+actor = os.environ["GITHUB_ACTOR"]
 repo_name = os.environ["GITHUB_REPOSITORY"]
+
 repo = g.get_repo(repo_name)
-pr = repo.get_pull(int(sys.argv[2]))
+pr = repo.get_pull(pr_number)
 print(str(pr))
 
-remote_repo = (
-    "https://{GITHUB_ACTOR}:{token}@github.com/{GITHUB_REPOSITORY}.git".format(
-        token=sys.argv[1],
-        **os.environ
-    )
-)
+remote_repo = "https://{}:{}@github.com/{}.git".format(actor, token, repo_name)
 
 
 def _run(*args, **kwargs):
